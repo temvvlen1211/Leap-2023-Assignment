@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const student = {
+      //     firstname: "sed-erdene",
+      //     lastname: "odgerel",
+      //     age: 14,
+      //     hobby: ["video games", "watching streams", "anime", "panda"],
+      //   };
+      //   console.log(
+      //     `${student.lastname} ovogtoi ${student.firstname} ni ${student.age} nastia`
+      //   );
+      //   const studentCopy = Object.assign(student);
+      //   studentCopy.age = 19;
+      //   consol.log((studentCopy = "studentCopy"));
+      //   console.log(student["age"]);
+      const data = [
+        {
+          gender: "m",
+          firstname: " Dorj",
+          lastname: "bat",
+          point: 80,
+          age: 20,
+        },
+        {
+          gender: "f",
+          firstname: " sengur",
+          lastname: "batbold",
+          point: 60,
+          age: 19,
+        },
+        {
+          gender: "m",
+          firstname: " hulgaich",
+          lastname: "bold",
+          point: 74,
+          age: 50,
+        },
+        {
+          gender: "f",
+          firstname: " halbaga",
+          lastname: "purew",
+          point: 90,
+          age: 45,
+        },
+        {
+          gender: "m",
+          firstname: " goku",
+          lastname: "baasan",
+          point: 78,
+          age: 17,
+        },
+        {
+          gender: "f",
+          firstname: " naruto",
+          lastname: "uugana",
+          point: 68,
+          age: 15,
+        },
+        {
+          gender: "f",
+          firstname: " danh",
+          lastname: "hurelsuh",
+          point: 47,
+          age: 45,
+        },
+        {
+          gender: "m",
+          firstname: " seremj",
+          lastname: "zandan-shatar",
+          point: 97,
+          age: 55,
+        },
+        {
+          gender: "f",
+          firstname: " oyunaa",
+          lastname: "oyun-erdene",
+          point: 45,
+          age: 75,
+        },
+        {
+          gender: "m",
+          firstname: " naranbat",
+          lastname: "tsogtoo",
+          point: 66,
+          age: 80,
+        },
+      ];
+
+      function getCountByGender(list, gender) {
+        let count = 0;
+        for (let i = 0; i < list.length; i++) {
+          if (list[i].gender === gender) {
+            count++;
+          }
+        }
+        return count;
+      }
+      const femaleCount = getCountByGender(data, "f");
+      const maleCount = getCountByGender(data, "m");
+      console.log(`niit: ${femaleCount} emegtei, ${maleCount} ergtei baina.`);
+
+      function getCountByFieldValueRange(list, key, min, max) {
+        let count = 0;
+        for (let i = 0; i < list.length; i++) {
+          if (list[i][key] > min && list[i][key] < max) {
+            count++;
+          }
+        }
+        return count;
+      }
+      const childrenCount = getCountByFieldValueRange(data, "age", 0, 17);
+      const youth = getCountByFieldValueRange(data, "age", 18, 30);
+      const adult = getCountByFieldValueRange(data, "age", 30, 55);
+      const elder = getCountByFieldValueRange(data, "age", 55, 200);
+      console.log(
+        `niit: ${childrenCount} huuhed,
+        ${youth} zaluu nas,
+        ${adult} dundaj ergem nasnii humuus,
+        ${elder} ahmad humuus baina. `
+      );
+      const totalA = getCountByFieldValueRange(data, "point", 90, 101);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const str1 = "hello";
+      const str2 = "My name is";
+      const str3 = `Temuulen`;
+      const message = str1 + "everyone," + str2 + str3;
+      console.log(message);
+      const message1 = `${str1} everyone  ${str2} ${str3}`;
+      console.log(message1);
+      console.log(str1.charAt(0));
+      console.log(str2.toLowerCase(1));
+      console.log(str1.substr(0, 2));
+      console.log(str1.substr(2, 5));
+      //   ehleh bolon duusah index iig   zaaj ogch bga
+      console.log(str1.substring(1));
+      console.log(str2.indexOf("name"));
+      const iof = "this is string";
+      console.log(iof.substr(0, iof.indexOf("is")));
+      let a = 5,
+        b = 9;
+      const diff = Math.abs(a - b);
+      const num = window.prompt(Math.round(Math.random()));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const names = [
+        "temuulen",
+        "irmuun",
+        "sederdene",
+        "osohbayr",
+        "temuulen",
+        "ganbold",
+        "amur",
+        "dolgoon",
+        "namuunbaigal",
+        "baljin-nyam",
+        "anand",
+        "odbayr",
+        "narantsetseg",
+        "aimergen",
+        "tengisbold",
+        "javvhlant",
+        "dalaihuu",
+        "binderya",
+        "indra",
+      ];
+      // let longIndex = 0;
+      let sum = 0;
+      for (let i = 0; i < names.length; i++) {
+        //   if (names[longIndex].length < names[i].length) {
+        //     longIndex = i;
+        //   }
+        if (names[i][0] === "t") sum++;
+      }
+      // console.log(`${names[longIndex]} ni hamgiin urt nertei hun ymaa .`);
+
+      console.log(`t usgeer ehelsen hun niit: ${sum}`);
+      const result = [60, 70, 80, 90, 95, 92, 70, 76];
+      let resultSum = 0;
+      for (let i = 0; i < result.length; i++) {
+        resultSum += result[1];
+      }
+      for (let i = 0; i === 60; i++) {
+        resultSum;
+      }
+      console.log();
+      const avg = resultSum / result.length;
+      console.log(Math.round(avg));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let students = [
+        {
+          name: "Сэд-Эрдэнэ",
+          age: 19,
+          gender: "male",
+        },
+        {
+          name: "Индра",
+          age: 19,
+          gender: "female",
+        },
+        {
+          name: "Хатнаа ",
+          age: 21,
+          gender: "male",
+        },
+        {
+          name: "Тэмүүлэн",
+          age: 24,
+          gender: "male",
+        },
+        {
+          name: "Намуун",
+          age: 23,
+          gender: "female",
+        },
+      ];
+      // 1. Ангид хэдэн эрэгтэй , эмэгтэй сурагч байгааг олох object буцаадаг функц бичих
+      function getCountByGender(list, gender) {
+        let sum = 0;
+        for (let i = 0; i < list.length; i++) {
+          if (list[i].gender === gender) {
+            sum++;
+          }
+        }
+        return sum;
+      }
+      const femaleCount = getCountByGender(students, "female");
+      const maleCount = getCountByGender(students, "male");
+      console.log(`Niit: ${femaleCount} emegtei, ${maleCount} ergtei baina.`);
+
+      //2.Сурагчдын насны дунджийг олох функц бичих
+
+      function getCountByAvarange(list, age) {
+        let reducer = (niit, utga) => niit + utga;
+        let sum = list.reduce(reducer);
+        return sum / list.length;
+      }
+
+      let ages = students.map((students) => students.age);
+
+      console.log(getCountByAvarange(ages));
+
+      //Сурагчидад овог нэмж оруулах
+
+      function getCountLastName(list, lastname) {
+        for (let i = 0; i < array.length; i++) {
+          if (list[i]) {
+          }
+        }
+      }
+
+      //4. Ижилхэн настай сурагчдыг олж шинэ array дотор хийх
+      function getCountBySameAge(list, key) {
+        let router = [];
+        for (let i = 0; i < list.length; i++) {
+          for (let j = i + 1; j < list.length; j++) {
+            if (list[i][key] === list[j][key]) {
+            }
+          }
+          return router;
+        }
+      }
+      const total = getCountBySameAge(students, age);
+      console.log(total);
+    </script>
+  </body>
+</html>

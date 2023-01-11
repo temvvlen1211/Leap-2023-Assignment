@@ -1,0 +1,22 @@
+.box{
+    width: 100px;
+    height: 100px ;
+}
+.start{
+    background-color: blue;
+    transition: 3s all;
+}
+.start:active{
+    width: 100%;
+    
+}
+.end{
+    background-color: green;
+    transition: 3s all;
+}
+.end:hover{
+    width: 100%;
+}
+.lan{
+    
+}
