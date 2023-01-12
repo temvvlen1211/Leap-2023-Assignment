@@ -1,0 +1,30 @@
+[
+  {
+    "profile": "https://randomuser.me/api/portraits/men/41.jpg",
+    "firstName": "Kurtis Pykes",
+    "lastName": "The Startup",
+    "text": "Don’t Just Set Goals. Build Systems",
+    "img": "https://miro.medium.com/focal/112/112/50/50/1*9bmud39VZM1c7UqiTs_rIA.png  "
+  },
+  {
+    "profile": "https://randomuser.me/api/portraits/men/39.jpg",
+    "firstName": "Natassha ",
+    "lastName": "Towards Data ",
+    "text": "How to Make Money While Learning Data Science in 2023",
+    "img": "https://miro.medium.com/focal/112/112/50/50/1*LN9SOk27XSHY4bczEDU-lg.jpeg"
+  },
+  {
+    "profile": "https://randomuser.me/api/portraits/men/86.jpg",
+    "firstName": "Mark Schaefer",
+    "lastName": "",
+    "text": "20 Entertaining Uses of ChatGPT You Never Knew Were Possible",
+    "img": "https://miro.medium.com/focal/112/112/50/50/0*Nz897vaKH2yJhSQJ"
+  },
+  {
+    "profile": "https://randomuser.me/api/portraits/men/45.jpg",
+    "firstName": "Katrine Tjoelsen",
+    "lastName": "Better Humans",
+    "text": "8 Communication Hacks I Use To Be More Assertive As a Young Employee",
+    "img": "https://miro.medium.com/focal/112/112/50/50/0*V3XDwTwCJyUZQ2rS"
+  }
+]

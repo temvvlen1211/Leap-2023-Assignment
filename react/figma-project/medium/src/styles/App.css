@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+p {
+  padding: 0;
+}
 
 body {
   margin: 0;
@@ -71,10 +74,48 @@ body {
   border: 1px solid #bb1a8e;
 }
 
-.famale-about-text {
+.female-about-text {
   font-family: "Helvetica Neue";
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
   color: #3e3d41;
+}
+
+.aside-name {
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #3e3d41;
+  margin-left: 10px;
+}
+.aside-text {
+  font-family: "Helvetica Neue";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3e3d41;
+}
+aside {
+  border-left: 1px solid #ebe9ec;
+  padding: 0 50px;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+.help-menu-text {
+  font-family: "Helvetica Neue";
+  font-weight: 400;
+  font-size: 11px;
+  color: #706e72;
+  text-decoration: none;
+}
+
+.help {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 7px;
 }
