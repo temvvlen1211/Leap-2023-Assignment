@@ -10,8 +10,6 @@ export default function ArticleBody() {
         <div className="col-sm-8 px-5 ">
           <ArticleBodyHeader />
           <ArticleBodySection />
-          <ArticleBodySection />
-          <ArticleBodySection />
         </div>
         <div className="col-sm-4 position-relative">
           <Aside />
