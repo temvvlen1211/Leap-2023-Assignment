@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
@@ -6,11 +7,9 @@ export default function Header() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("https://demo-api-one.vercel.app/api/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        setCategories(data.body);
-      });
+    axios
+      .get("http://localhost:8000/categories")
+      .then((res) => setCategories(res.data));
   }, []);
 
   return (
@@ -35,9 +34,6 @@ export default function Header() {
         <div className="container">
           <nav>
             <ul>
-              <li>
-                <a href="/">Нүүр</a>
-              </li>
               {categories.map((item) => (
                 <li key={item.id}>
                   <a href="/">{item.name}</a>

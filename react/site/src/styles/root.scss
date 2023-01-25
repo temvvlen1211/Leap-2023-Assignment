@@ -72,7 +72,13 @@ header {
     bottom: 0;
     right: 0;
     object-fit: cover;
+    opacity: 0.5;
+    transition: 0.5s all;
+    &:hover {
+      opacity: 1;
+    }
   }
+
   &-body {
     position: absolute;
     left: 0;

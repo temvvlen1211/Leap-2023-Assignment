@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
 
 export default function CategoriesEdit({ afterEdit, category }) {
   const [name, setName] = useState(category?.name);
@@ -14,32 +14,19 @@ export default function CategoriesEdit({ afterEdit, category }) {
 
   const submit = () => {
     let statusCode;
-    fetch("https://demo-api-one.vercel.app/api/categories", {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: localStorage.getItem("token"),
-      },
-      body: JSON.stringify({ id: category?.id, name, description }),
-    })
-      .then((res) => {
-        statusCode = res.status;
-        return res.json();
+    axios
+      .patch("https://demo-api-one.vercel.app/api/categories", {
+        id: category?.id,
+        name,
+        description,
       })
-      .then((data) => {
-        if (statusCode === 200) {
-          toast.success("amjilttai nemegdlee");
-          afterEdit(data.body);
-        } else {
-          if (statusCode === 403 || statusCode === 401) {
-            navigate("/signout ");
-          }
-          toast.error(data.message);
-        }
+      .then((res) => {
+        console.log(res);
+        toast.success("amjilttai zasagdlaa", res.data.body);
+        afterEdit(res.data.body);
       })
       .catch((err) => {
         console.log(err);
-        toast.error("aldaa garlaa");
       });
   };
 
@@ -70,11 +57,6 @@ export default function CategoriesEdit({ afterEdit, category }) {
           }}
           as="textarea"
           rows={3}
-        />
-        <ReactQuill
-          theme="snow"
-          value={description}
-          onChange={setDescription}
         />
       </Form.Group>
 
