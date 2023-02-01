@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [categories, setCategories] = useState([]);
@@ -34,6 +35,12 @@ export default function Header() {
         <div className="container">
           <nav>
             <ul>
+              <li>
+                <Link to={"/"}>Nuur</Link>
+              </li>
+              <li>
+                <Link to={"/products"}>baraa</Link>
+              </li>
               {categories.map((item) => (
                 <li key={item.id}>
                   <a href="/">{item.name}</a>

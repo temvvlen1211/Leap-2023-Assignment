@@ -10,20 +10,14 @@ const ListItem = ({ item, index, onEdit }) => {
 
   const deleteItem = () => {
     axios
-      .delete("https://demo-api-one.vercel.app/api/categories", {
-        data: {
-          id: item.id,
-        },
-      })
-      .then((res) => {
+      .delete("http://localhost:8000/categories/" + item.id)
+      .then(() => {
         toast.success("amjilttai usgalaa");
         setDeleted(true);
       })
       .catch((err) => {
-        if (err.message.status === 401 || err.response.status === 403) {
-          navigate("/signout");
-        }
-        toast.error(err.response.data.message);
+        console.log(err);
+        toast.error("aldaa garlaa");
       });
   };
 

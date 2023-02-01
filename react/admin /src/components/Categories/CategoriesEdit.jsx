@@ -10,23 +10,19 @@ export default function CategoriesEdit({ afterEdit, category }) {
   const [name, setName] = useState(category?.name);
   const [description, setDescription] = useState(category?.description);
 
-  const navigate = useNavigate();
-
   const submit = () => {
-    let statusCode;
     axios
-      .patch("https://demo-api-one.vercel.app/api/categories", {
-        id: category?.id,
+      .put("http://localhost:8000/categories/" + category?.id, {
         name,
         description,
       })
       .then((res) => {
-        console.log(res);
-        toast.success("amjilttai zasagdlaa", res.data.body);
-        afterEdit(res.data.body);
+        toast.success("amjilttai zasagdlaa");
+        afterEdit(res.data);
       })
       .catch((err) => {
         console.log(err);
+        toast.error("aldaa garlaa");
       });
   };
 
