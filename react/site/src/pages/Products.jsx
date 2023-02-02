@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import relateTime from "dayjs/plugin/relativeTime";
 import currencyFormatter from "../utils/currencyFormatter";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 dayjs.extend(relateTime);
 
 export default function Product() {
@@ -11,21 +11,30 @@ export default function Product() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const location = useLocation();
-  const [search, setSearch] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [locationQuery, setLocationQuery] = useState("");
+  const [isReady, setIsReady] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:8000/products?pageSize=${pageSize}&page=${currentPage}`
-      )
-      .then((res) => setPage(res.data));
-  }, [currentPage, pageSize]);
+    const newQuery = new URLSearchParams();
+    newQuery.set("pageSize", pageSize);
+    newQuery.set("page", currentPage);
+    if (searchQuery !== "") {
+      newQuery.set("q", searchQuery);
+    }
+    setLocationQuery(newQuery.toString());
+  }, [currentPage, pageSize, searchQuery]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/products?search=${search}`)
-      .then((res) => setSearch(res.data));
-  }, [search]);
+    navigate(`/products?${locationQuery}`);
+  }, [locationQuery]);
+
+  useEffect(() => {
+    if (isReady) {
+      getResults();
+    }
+  }, [isReady]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -35,7 +44,29 @@ export default function Product() {
     if (searchParams.has("pageSize")) {
       setPageSize(Number(searchParams.get("pageSize")));
     }
+    if (searchParams.has("q")) {
+      setSearchQuery(searchParams.get("q"));
+    }
+    if (isReady) {
+      getResults();
+    } else {
+      setIsReady(true);
+    }
   }, [location]);
+
+  const getResults = () => {
+    const urlParams = new URLSearchParams();
+    urlParams.set("pageSize", pageSize);
+    urlParams.set("page", currentPage);
+    if (searchQuery !== "") {
+      urlParams.set(" q", searchQuery);
+    }
+    axios
+      .get(`http://localhost:8000/products?${urlParams.toString()}`)
+      .then((res) => {
+        setPage(res.data);
+      });
+  };
 
   if (!page) {
     return (
@@ -72,15 +103,6 @@ export default function Product() {
         </li>
       );
     }
-    if (page.page === 1 && page.page === 2) {
-      result.push(
-        <li className={`page-item active`}>
-          <a href="#" className="page-link">
-            2
-          </a>
-        </li>
-      );
-    }
 
     if (page.totalPages - 3 >= page.page) {
       // back trible dots
@@ -108,15 +130,27 @@ export default function Product() {
         <div className="container">
           <div className="d-flex justify-content-between mb-4">
             <div>
-              <label>
-                <input type="search" />
+              <label className="me-4">
+                Нэрээр хайх
+                <input
+                  type="text"
+                  className="form-control"
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                />
               </label>
             </div>
             <label>
-              Хуудаслалт &nbsp;
+              Хуудаслалт
               <select
-                className="form-control d-inline-block w-auto"
-                onChange={(e) => setPageSize(e.target.value)}
+                className="form-control"
+                onChange={(e) => {
+                  setCurrentPage(1);
+                  setPageSize(e.target.value);
+                }}
                 value={pageSize}
               >
                 <option value="10">10</option>

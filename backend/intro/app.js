@@ -94,41 +94,39 @@ app.get("/generateNumbers", (req, res) => {
 
 let products = JSON.parse(fs.readFileSync("MOCK_DATA.json", "utf-8"));
 app.get("/products", (req, res) => {
-  let { pageSize, page, price, q, priceTo, priceFrom } = req.query;
+  let { pageSize, page, q, priceTo, priceFrom, price } = req.query;
   pageSize = Number(pageSize) || 10;
   page = Number(page) || 1;
   let start, end;
+
   start = (page - 1) * pageSize;
   end = page * pageSize;
-  const items = products.slice(start, end);
-  let numberto = 2000;
-  let numberfrom = 5000;
+
+  const newProducts = products.filter((product) => {
+    let matching = true;
+    if (q) {
+      matching = product.name.toLowerCase().includes(q.toLowerCase());
+    }
+    return matching;
+  });
+  const items = newProducts.slice(start, end);
+  let numberTo = 2000;
+  let numberFrom = 5000;
   price = products.filter((item) => {
-    if (item.price >= numberto) {
-      if (item.price <= numberfrom) {
+    if (item.price >= numberTo) {
+      if (item.price <= numberFrom) {
         return item;
       }
     }
   });
 
-  app.get("/products:id", (req, res) => {
-    let { search } = req.query;
-
-    search = products.filter((item) => {
-      if (item.name === input.value) {
-        return item;
-      }
-    });
-  });
-
   res.json({
-    total: products.length,
-    totalPages: Math.ceil(products.length / pageSize),
+    total: newProducts.length,
+    totalPages: Math.ceil(newProducts.length / pageSize),
     page,
-    search,
     pageSize,
     price,
-    // items,
+    items,
   });
 });
 
