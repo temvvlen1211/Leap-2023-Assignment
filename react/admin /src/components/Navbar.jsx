@@ -3,11 +3,7 @@ import NavbarMenu from "./Navbar/NavbarMenu";
 import NavbarWrapper from "./Navbar/NavbarWrapper";
 
 export default function Navbar({ onToggle }) {
-  const menuItems = [
-    { label: "Articles", link: "/articles" },
-    { label: "Feedback", link: "#" },
-    { label: "Files", link: "#" },
-  ];
+  const menuItems = [];
   const dropdownItems = [
     { label: "Profile", link: "#" },
     { label: "Inbox", link: "#" },
@@ -18,7 +14,7 @@ export default function Navbar({ onToggle }) {
 
   return (
     <NavbarWrapper>
-      <NavbarMenu title="Admin" items={menuItems} onToggle={onToggle} />
+      <NavbarMenu title="Admin" onToggle={onToggle} />
       <NavbarDropdown
         items={dropdownItems}
         img="https://avatars.githubusercontent.com/u/81268891?s=200&v=4"
