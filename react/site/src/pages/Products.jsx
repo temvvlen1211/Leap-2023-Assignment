@@ -1,10 +1,33 @@
 import dayjs from "dayjs";
+import relateTime from "dayjs/plugin/relativeTime";
+import updateLocale from "dayjs/plugin/updateLocale";
+import "dayjs/locale/mn";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
-import relateTime from "dayjs/plugin/relativeTime";
 import currencyFormatter from "../utils/currencyFormatter";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 dayjs.extend(relateTime);
+dayjs.locale("mn");
+dayjs.extend(updateLocale);
+dayjs.updateLocale("mn", {
+  relativeTime: {
+    future: "%s дараа",
+    past: "%s өмнө",
+    s: "хэдхэн хоромын",
+    m: "1 минутын",
+    mm: "%d минутын",
+    h: "1 цагын",
+    hh: "%d цагын",
+    d: "1 өдрийн",
+    dd: "%d өдрийн",
+    M: "1 сарын",
+    MM: "%d сарын",
+    y: "1 жилийн",
+    yy: "%d жилийн",
+  },
+});
 
 export default function Product() {
   const [page, setPage] = useState(null);
@@ -62,7 +85,7 @@ export default function Product() {
       urlParams.set(" q", searchQuery);
     }
     axios
-      .get(`http://localhost:8000/products?${urlParams.toString()}`)
+      .get(`http://localhost:8000/products?${locationQuery.toString()}`)
       .then((res) => {
         setPage(res.data);
       });

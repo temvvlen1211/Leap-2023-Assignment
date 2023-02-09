@@ -1,28 +1,22 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 
-export default function CategoriesEdit({ afterEdit, category }) {
+export default function CategoryEdit({ afterEdit, category }) {
   const [name, setName] = useState(category?.name);
-  const [description, setDescription] = useState(category?.description);
 
   const submit = () => {
     axios
-      .put("http://localhost:8000/categories/" + category?.id, {
-        name,
-        description,
-      })
+      .put("http://localhost:8000/categories/" + category.id, { name })
       .then((res) => {
-        toast.success("amjilttai zasagdlaa");
+        toast.success("Амжилттай нэмэгдлээ");
         afterEdit(res.data);
       })
       .catch((err) => {
         console.log(err);
-        toast.error("aldaa garlaa");
+        toast.error("Алдаа гарлаа");
       });
   };
 
@@ -44,18 +38,6 @@ export default function CategoriesEdit({ afterEdit, category }) {
           placeholder="Name of the category..."
         />
       </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          value={description}
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-          as="textarea"
-          rows={3}
-        />
-      </Form.Group>
-
       <Button variant="primary" type="submit">
         Submit
       </Button>

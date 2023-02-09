@@ -1,24 +1,27 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 
-export default function CategoriesCreate({ afterSubmit }) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+import axios from "axios";
+import { useEffect, useRef } from "react";
+
+export default function CategoryCreate({ afterSubmit }) {
+  const nameRef = useRef(null);
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
 
   const submit = () => {
     axios
-      .post("http://localhost:8000/categories", { name, description })
+      .post("http://localhost:8000/categories", { name: nameRef.current.value })
       .then((res) => {
-        toast.success("amjilttai ustgalaa");
+        toast.success("Амжилттай нэмэгдлээ");
         afterSubmit(res.data);
       })
       .catch((err) => {
         console.log(err);
-        toast.error("aldaa garlaa");
+        toast.error("Алдаа гарлаа");
       });
   };
 
@@ -32,23 +35,9 @@ export default function CategoriesCreate({ afterSubmit }) {
       <Form.Group className="mb-3">
         <Form.Label>Name</Form.Label>
         <Form.Control
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
           type="text"
           placeholder="Name of the category..."
-        />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          value={description}
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
-          as="textarea"
-          rows={3}
+          ref={nameRef}
         />
       </Form.Group>
       <Button variant="primary" type="submit">
