@@ -2,6 +2,14 @@ const express = require("express");
 
 const cors = require("cors");
 const fs = require("fs");
+const openaiPackage = require("openai");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const configuration = new openaiPackage.Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new openaiPackage.OpenAIApi(configuration);
 
 const app = express();
 
@@ -44,6 +52,7 @@ app.delete("/categories/:id", (req, res) => {
 
 const bodyParser = require("body-parser");
 const { match } = require("assert");
+const { response } = require("express");
 const jsonParser = bodyParser.json();
 
 app.post("/categories", jsonParser, (req, res) => {
@@ -182,7 +191,25 @@ app.delete("/menus/:id", (req, res) => {
   fs.writeFileSync("menus.json", JSON.stringify(menus));
   res.json(id);
 });
+app.get("/generate", async (req, res) => {
+  const response = await openai.createImage({
+    prompt: "sky ",
+    n: 1,
+    size: "256x256",
+  });
+  image_url = response.data.data[0].url;
+  res.json(image_url);
+});
+app.get("/generate:prompt", async (req, res) => {
+  const { prompt } = req.query;
+  const finish = () => {
+    return prompt;
+  };
 
-app.listen(port, () => {
+  res.json();
+});
+app.listen(port, async () => {
   console.log("http://localhost:" + port);
+  const response = await openai.listEngines();
+  console.log(response);
 });

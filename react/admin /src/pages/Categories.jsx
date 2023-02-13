@@ -1,67 +1,11 @@
-import { useEffect, useState } from "react";
 import CategoryList from "../components/Categories/CategoriesList";
 import Heading from "../components/Heading";
-import { toast } from "react-toastify";
-import DynamicModal from "../components/utils/DynamicModal";
 import CategoryCreate from "../components/Categories/CategoriesCreate";
 import CategoryEdit from "../components/Categories/CategoriesEdit";
-import axios from "axios";
-// import useQuery from '../hooks/useQuery';
-import { useLocation, useSearchParams } from "react-router-dom";
-import { useContext } from "react";
-import { ModalContext } from "../contexts/ModalContext";
+import { useModal } from "../contexts/ModalContext";
+import { useCategories } from "../hooks/categories/";
 
 export default function Categories() {
-  const { setModalContent, setModalShow, setModalTitle } =
-    useContext(ModalContext);
-
-  const [categories, setCategories] = useState([]);
-  const params = useSearchParams();
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/categories")
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Алдаа гарлаа");
-      });
-    console.log(params[0].get("page"));
-  }, []);
-
-  const afterSubmit = (category) => {
-    setCategories([...categories, category]);
-  };
-
-  const showCreateModal = () => {
-    setModalTitle("Category nemeh");
-    setModalContent(<CategoryCreate afterSubmit={afterSubmit} />);
-    setModalShow(true);
-  };
-
-  const afterEdit = (category) => {
-    let newCategories = categories.map((cat) => {
-      if (cat.id === category.id) {
-        return category;
-      }
-      return cat;
-    });
-    setCategories(newCategories);
-  };
-
-  const showEditModal = (category) => {
-    setModalContent(<CategoryEdit category={category} afterEdit={afterEdit} />);
-    setModalShow(true);
-  };
-
-  return (
-    <>
-      <div className="container-sm body-container">
-        <Heading title="Categories" handleShow={showCreateModal} />
-        <CategoryList items={categories} onEdit={showEditModal} />
-      </div>
-    </>
-  );
+  const [categories, setCategories] = useCategories();
+  const { setModalContent, setModalShow, setModalTitle } = useModal();
 }

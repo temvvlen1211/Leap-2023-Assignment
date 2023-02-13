@@ -1,23 +1,8 @@
-import { useState } from "react";
 import { SlPencil, SlTrash } from "react-icons/sl";
-import { toast } from "react-toastify";
-import axios from "axios";
+import { useRemoveCategory } from "../../hooks/categories";
 
 const ListItem = ({ item, index, onEdit }) => {
-  const [deleted, setDeleted] = useState(false);
-
-  const deleteItem = () => {
-    axios
-      .delete("http://localhost:8000/categories/" + item.id)
-      .then(() => {
-        toast.success("Амжилттай устгалаа");
-        setDeleted(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Алдаа гарлаа");
-      });
-  };
+  const { deleteItem, deleted } = useRemoveCategory(item.id);
 
   if (deleted) return <></>;
 
