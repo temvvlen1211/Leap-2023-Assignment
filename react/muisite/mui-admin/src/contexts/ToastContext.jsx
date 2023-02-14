@@ -10,7 +10,7 @@ export const ToastProvider = ({ children }) => {
 
   const handleClose = () => {
     setOpen(false);
-    setMessage("");
+    setMessage("amjilttai nemegdlee");
     setType("success");
   };
 
