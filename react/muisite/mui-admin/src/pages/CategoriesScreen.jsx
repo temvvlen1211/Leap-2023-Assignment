@@ -6,6 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "#", width: 70 },
@@ -70,7 +71,9 @@ export const CategoriesScreen = () => {
           Categories
         </Typography>
         <Stack sx={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <Button variant="contained">New</Button>
+          <Link to={"/NewCategories"}>
+            <Button variant="contained">New</Button>
+          </Link>
           <Button variant="contained">Filter</Button>
         </Stack>
 

@@ -3,6 +3,7 @@ import { blueGrey } from "@mui/material/colors";
 import { Route, Routes } from "react-router";
 import { Layout } from "./components/Layout";
 import { CategoriesScreen, HomeScreen } from "./pages";
+import { CategoriesAddScreen } from "./pages/CategoriesAddScreen";
 
 const bgColor = blueGrey[50];
 
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/categories" element={<CategoriesScreen />} />
+          <Route path="/NewCategories" element={<CategoriesAddScreen />} />
         </Routes>
       </Stack>
     </Layout>
