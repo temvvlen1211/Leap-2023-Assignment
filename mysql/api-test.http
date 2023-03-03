@@ -1,0 +1,75 @@
+
+# category;
+
+GET http://localhost:8000/categories/
+
+###
+GET http://localhost:8000/categories/30
+
+
+
+###
+POST http://localhost:8000/categories/
+content-Type: application/json
+
+{
+    "name" : "duus",
+    "slug" : "suow",
+    "imageUrl" : "" 
+}
+
+
+
+###
+DELETE http://localhost:8000/categories/28
+
+
+###
+PUT  http://localhost:8000/categories/29
+Content-Type: application/json
+
+{
+    
+    "name" : "12345678",
+    "slug" : "123456789",
+    "imageUrl" : "dasd" 
+}
+
+
+# product
+
+
+###
+GET http://localhost:8000/product/
+
+###
+GET http://localhost:8000/product/1
+
+
+
+###
+POST http://localhost:8000/product/
+content-Type: application/json
+
+{
+    "name" : "duus",
+    "slug" : "suow",
+    "imageUrl" : "" 
+}
+
+
+
+###
+DELETE http://localhost:8000/product/1
+
+
+###
+PUT  http://localhost:8000/product/1
+Content-Type: application/json
+
+{
+    
+    "name" : "12345678",
+    "slug" : "123456789",
+    "imageUrl" : "dasd" 
+}
