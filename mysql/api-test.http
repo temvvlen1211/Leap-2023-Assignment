@@ -40,15 +40,15 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:8000/product/
+GET http://localhost:8000/products/
 
 ###
-GET http://localhost:8000/product/1
+GET http://localhost:8000/products/2
 
 
 
 ###
-POST http://localhost:8000/product/
+POST http://localhost:8000/products/
 content-Type: application/json
 
 {
@@ -60,11 +60,11 @@ content-Type: application/json
 
 
 ###
-DELETE http://localhost:8000/product/1
+DELETE http://localhost:8000/products/1
 
 
 ###
-PUT  http://localhost:8000/product/1
+PUT  http://localhost:8000/products/
 Content-Type: application/json
 
 {
@@ -73,3 +73,55 @@ Content-Type: application/json
     "slug" : "123456789",
     "imageUrl" : "dasd" 
 }
+
+
+
+
+
+# user
+
+
+###
+GET http://localhost:8000/users/
+
+
+###
+GET http://localhost:8000/users/VImOe4S_Lcp-hYyAg5SD1
+
+
+
+###
+POST http://localhost:8000/users/
+content-type: application/json
+
+{
+    "firstName":"Temuulendad",
+    "lastName": "Bayrsaikhandad",
+    "birthDate" : "1999-01-12",
+    "email": "temvvlen121d1@gmail.com",
+    "phone": "86911111",
+    "password": "",
+    "imageUrl": ""
+}
+
+###
+DELETE http://localhost:8000/users/XWiuW5351EiX7M5LzfdbO
+
+###
+PUT  http://localhost:8000/users/VImOe4S_Lcp-hYyAg5SD1  
+content-type: application/json
+
+{
+    "firstName":"hahaha",
+    "lastName": "ahaahahahaa",
+    "birthDate" : "1998-02-22",
+    "email": "hakaanukup@gmail.com",
+    "phone": "12345678",
+    "password": "",
+    "imageUrl": ""
+}
+
+
+
+
+
