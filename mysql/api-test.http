@@ -13,19 +13,19 @@ POST http://localhost:8000/categories/
 content-Type: application/json
 
 {
-    "name" : "duus",
-    "slug" : "suow",
+    "name" : "all",
+    "slug" : "star",
     "imageUrl" : "" 
 }
 
 
 
 ###
-DELETE http://localhost:8000/categories/28
+DELETE http://localhost:8000/categories/29
 
 
 ###
-PUT  http://localhost:8000/categories/29
+PUT  http://localhost:8000/categories/36
 Content-Type: application/json
 
 {
@@ -52,15 +52,15 @@ POST http://localhost:8000/products/
 content-Type: application/json
 
 {
-    "name" : "duus",
-    "slug" : "suow",
+    "name" : "das",
+    "slug" : "34das",
     "imageUrl" : "" 
 }
 
 
 
 ###
-DELETE http://localhost:8000/products/1
+DELETE http://localhost:8000/products/15
 
 
 ###
