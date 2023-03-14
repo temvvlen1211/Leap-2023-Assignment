@@ -1,0 +1,10 @@
+POST  http://localhost:8000/links
+Content-Type: application/json
+
+{
+    "url":"https://classroom.google.com/c/NTA0NzAxMjcxNTQ1"
+}
+
+
+###
+GET http://localhost:8000/links
